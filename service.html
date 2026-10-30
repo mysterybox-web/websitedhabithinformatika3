@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra Privilege | LUCKY BOX GARUT</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="home.html">LUCKY BOX <span>GARUT</span></a>
+        <nav class="main-nav" aria-label="Navigasi utama">
+            <a href="home.html">Home</a><a href="profil.html">Tentang</a>
+            <a href="produk.html">Koleksi</a><a class="active" href="service.html">Extra Privilege</a>
+        </nav>
+    </header>
+    <main class="content-width page-main premium-page">
+        <section class="privilege-hero">
+            <p class="eyebrow">EXCLUSIVE COLLECTION</p>
+            <h1>EXTRA PRIVILEGE</h1>
+            <p class="privilege-tagline">Beyond Mystery. Beyond Expectations</p>
+            <p>Pilih mystery box premium dari berbagai kategori. Temukan paket yang cocok dengan minat dan budget kamu</p>
+            <strong class="privilege-range">Exclusive Collection — Rp5.000.000 to Rp100.000.000</strong>
+        </section>
+
+        <section class="premium-catalog" aria-label="Extra Privilege collection">
+            <div class="premium-section-heading">
+                <div>
+                    <p class="eyebrow">CURATED FOR YOU</p>
+                    <h2>Koleksi Paket Premium</h2>
+                </div>
+                <div class="premium-collection-actions">
+                    <p id="premium-result-count" class="premium-result-count" aria-live="polite"></p>
+                    <a class="button button-secondary button-small" href="produk.html#pesan">Lihat Keranjang (<span id="premium-cart-count">0</span>)</a>
+                </div>
+            </div>
+            <div class="premium-filters">
+                <div class="form-field">
+                    <label for="premium-filter-category">Kategori</label>
+                    <select id="premium-filter-category"><option value="all">Semua kategori</option></select>
+                </div>
+                <div class="form-field">
+                    <label for="premium-filter-price">Rentang harga</label>
+                    <select id="premium-filter-price">
+                        <option value="all">Rp5.000.000–Rp100.000.000</option>
+                        <option value="5-15">Rp5.000.000–Rp15.000.000</option>
+                        <option value="15-50">Rp15.000.000–Rp50.000.000</option>
+                        <option value="50-100">Rp50.000.000–Rp100.000.000</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="premium-sort">Urutkan harga</label>
+                    <select id="premium-sort">
+                        <option value="low-high">Termurah ke termahal</option>
+                        <option value="high-low">Termahal ke termurah</option>
+                    </select>
+                </div>
+            </div>
+            <section id="premium-product-grid" class="premium-grid" aria-live="polite"></section>
+            <p id="premium-cart-status" class="premium-cart-status" role="status" aria-live="polite"></p>
+            <p id="premium-empty-state" class="premium-empty-state" hidden>Belum ada paket di pilihan ini</p>
+        </section>
+
+        <section class="exclusive-delivery">
+            <div class="premium-section-heading">
+                <div>
+                    <p class="eyebrow">PREMIUM ORDER SUPPORT</p>
+                    <h2>EXCLUSIVE DELIVERY SERVICE</h2>
+                </div>
+            </div>
+            <p>Pesanan premium mendapat penanganan dan pengaturan pengiriman khusus</p>
+            <div class="delivery-grid">
+                <article><h3>Penanganan Paket</h3><p>Penanganan menyesuaikan produk yang dipilih</p></article>
+                <article><h3>Kemasan Aman</h3><p>Kemasan disesuaikan dengan jenis dan ukuran produk</p></article>
+                <article><h3>Pengaturan Pengiriman</h3><p>Alamat dan jadwal dibahas sebelum pesanan dilanjutkan</p></article>
+                <article><h3>Konfirmasi Pengiriman</h3><p>Detail pengiriman disampaikan sebelum pesanan dilanjutkan</p></article>
+            </div>
+            <p class="delivery-disclaimer">Ongkir belum masuk ke total dan dibahas setelah alamat dipilih</p>
+        </section>
+
+        <section class="premium-request-section" id="premium-request">
+            <p class="eyebrow">PERMINTAAN PAKET</p>
+            <h2>Ajukan Paket Premium</h2>
+            <p>Pilih produk dan anggaran, lalu isi detail yang kamu butuhkan</p>
+            <button id="show-premium-form" class="button button-primary" type="button">Mulai Ajukan</button>
+            <section id="premium-form-wrap" class="premium-form-wrap" hidden>
+                <h3>Detail Permintaan</h3>
+                <form id="premium-form">
+                    <div class="form-layout">
+                        <div class="form-field">
+                            <label for="premium-name">Nama</label>
+                            <input id="premium-name" name="name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="premium-email">Email</label>
+                            <input id="premium-email" name="email" type="email" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="premium-phone">Nomor telepon</label>
+                            <input id="premium-phone" name="phone" type="tel" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="premium-product">Produk premium</label>
+                            <select id="premium-product" name="productId" required>
+                                <option value="">Pilih produk premium</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="premium-budget">Anggaran (Rp)</label>
+                            <input id="premium-budget" name="budget" type="number" min="5000000" max="100000000" step="500000" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="premium-delivery-preference">Preferensi pengiriman</label>
+                            <select id="premium-delivery-preference" name="deliveryPreference">
+                                <option value="">Dibahas setelah ditinjau</option>
+                                <option>Preferensi kemasan</option>
+                                <option>Pengaturan pengiriman</option>
+                                <option>Diskusi ambil atau kirim</option>
+                            </select>
+                        </div>
+                        <div class="form-field full-width">
+                            <label for="premium-requests">Catatan atau permintaan khusus</label>
+                            <textarea id="premium-requests" name="requests" placeholder="Opsional"></textarea>
+                        </div>
+                    </div>
+                    <p class="small-note">Produk pilihan: <span id="selected-package">Pilih produk premium</span></p>
+                    <button class="button button-primary" type="submit">Tinjau Permintaan</button>
+                    <div id="premium-message" class="form-message" role="status" hidden></div>
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <dialog id="premium-details-dialog" class="premium-details-dialog" aria-labelledby="premium-detail-title">
+        <div class="premium-dialog-header">
+            <h2 id="premium-detail-title">Detail Paket Premium</h2>
+            <button id="premium-dialog-close" class="button button-secondary button-small" type="button">Tutup</button>
+        </div>
+        <div id="premium-detail-content"></div>
+        <button id="premium-detail-order" class="button button-primary" type="button">Pesan Sekarang</button>
+    </dialog>
+
+    <dialog id="premium-request-dialog" class="book-details-dialog" aria-labelledby="premium-request-title">
+        <h2 id="premium-request-title">Tinjau Permintaan</h2>
+        <div id="premium-request-summary"></div>
+        <p class="small-note">Cek lagi detail permintaanmu sebelum konfirmasi</p>
+        <div class="request-dialog-actions">
+            <button id="premium-request-cancel" class="button button-secondary" type="button">Ubah Data</button>
+            <button id="premium-request-confirm" class="button button-primary" type="button">Simpan Rincian</button>
+        </div>
+    </dialog>
+    <footer class="site-footer"><div class="content-width footer-content"><div class="footer-brand"><strong>LUCKY BOX GARUT</strong><p>Unbox the Unexpected</p><p>Pilih mystery box sesuai minat dan budget kamu</p></div><nav class="footer-nav" aria-label="Navigasi footer"><a href="home.html">Home</a><a href="profil.html">Tentang</a><a href="produk.html">Koleksi</a><a href="service.html">Extra Privilege</a></nav><p class="footer-note">Cek detail isi setiap paket sebelum memesan</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUCKY BOX GARUT | Collections</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="home.html">LUCKY BOX <span>GARUT</span></a>
+        <nav class="main-nav" aria-label="Navigasi utama">
+            <a href="home.html">Home</a><a href="profil.html">Tentang</a>
+            <a class="active" href="produk.html">Koleksi</a><a href="service.html">Extra Privilege</a>
+        </nav>
+    </header>
+
+    <main class="content-width page-main">
+        <div class="page-heading">
+            <p class="eyebrow">DISCOVER YOUR MYSTERY BOX</p>
+            <h1>Explore Our Collections</h1>
+            <p>Pilih kategori favoritmu, cek detail paket, lalu tambahkan ke keranjang</p>
+        </div>
+        <div class="filter-list" aria-label="Filter kategori">
+            <button class="filter-button selected" type="button" data-category="Semua">Semua</button>
+            <button class="filter-button" type="button" data-category="Fashion">Fashion</button>
+            <button class="filter-button" type="button" data-category="Gadgets">Gadgets</button>
+            <button class="filter-button" type="button" data-category="Sports Equipment">Sports Equipment</button>
+            <button class="filter-button" type="button" data-category="Books">Books</button>
+            <button class="filter-button" type="button" data-category="Toys">Toys</button>
+        </div>
+        <section id="fashion-heading" class="fashion-heading" hidden>
+            <h2>Fashion You Might Wear</h2>
+            <p>Temukan aksesori dan item fashion buat melengkapi gaya sehari-hari</p>
+            <p class="composition-note">Komposisi menunjukkan pembagian kelompok contoh isi, bukan peluang mendapat item tertentu</p>
+        </section>
+        <section id="gadgets-heading" class="gadgets-heading" hidden>
+            <h2>Gadgets You Might Need</h2>
+            <p class="category-slogan">High risk, high tech, worth every single box</p>
+            <p>Pilih paket gadgets untuk kebutuhan harian sampai perlengkapan gaming</p>
+            <p class="composition-note">Persentase menunjukkan pembagian contoh isi, bukan peluang mendapat perangkat tertentu</p>
+        </section>
+        <section id="toys-heading" class="toys-heading" hidden>
+            <h2>Toys You Might Love</h2>
+            <p class="category-slogan">From Little Surprises to Legendary Collectibles</p>
+            <p>Temukan mainan, figure, miniatur, dan koleksi untuk berbagai budget</p>
+            <p class="composition-note">Persentase menunjukkan pembagian contoh isi, bukan peluang mendapat item tertentu</p>
+        </section>
+        <section id="sports-heading" class="sports-heading" hidden>
+            <h2>Sports Gear You Might Need</h2>
+            <p class="category-slogan">From Your First Game to Your Ultimate Training Setup</p>
+            <p>Pilih perlengkapan untuk olahraga dan latihan favoritmu</p>
+            <p class="composition-note">Pilihan ukuran, perlengkapan, dan ongkir dibahas sebelum pesanan dilanjutkan</p>
+        </section>
+        <section id="books-heading" class="books-heading" hidden>
+            <h2>Books You Might Love</h2>
+            <p class="category-slogan">From Your Next Favorite Story to a Whole New World of Knowledge</p>
+            <p>Temukan kejutan menarik dari dunia buku, mulai dari novel, komik, buku pengembangan diri, hingga berbagai bacaan edukatif; pilih paket sesuai budget dan preferensi genre kamu, lalu temukan bacaan baru yang mungkin menjadi favoritmu</p>
+            <p class="composition-note">Pilih genre yang kamu suka; judul dan edisi bukunya tetap menjadi kejutan</p>
+        </section>
+        <section id="product-grid" class="product-grid" aria-live="polite"></section>
+
+        <dialog id="book-details-dialog" class="book-details-dialog" aria-labelledby="book-dialog-title">
+            <div class="book-dialog-header">
+                <h2 id="book-dialog-title">Rincian Buku</h2>
+                <button id="book-dialog-close" class="button button-secondary button-small" type="button">Tutup</button>
+            </div>
+            <div id="book-detail-content"></div>
+            <fieldset id="book-genre-options" class="book-genre-options">
+                <legend>Pilih Genre Favoritmu</legend>
+                <div class="genre-choice-list"></div>
+            </fieldset>
+            <p class="book-genre-note">Genre jadi panduan pilihan, bukan jaminan judul atau edisi tertentu</p>
+            <button id="book-dialog-add" class="button button-primary" type="button">Tambah ke Keranjang</button>
+        </dialog>
+
+        <dialog id="product-details-dialog" class="book-details-dialog" aria-labelledby="product-dialog-title">
+            <div class="book-dialog-header">
+                <h2 id="product-dialog-title">Rincian Produk</h2>
+                <button id="product-dialog-close" class="button button-secondary button-small" type="button">Tutup</button>
+            </div>
+            <div id="product-detail-content"></div>
+        </dialog>
+
+        <section class="order-section" id="pesan">
+            <div id="checkout-shell" class="checkout-layout">
+                <form id="order-form" class="checkout-form">
+                    <header class="checkout-heading">
+                        <p class="eyebrow">CHECKOUT</p>
+                        <h2>Detail Pesanan</h2>
+                        <p>Cek kembali pesanan kamu sebelum melanjutkan</p>
+                    </header>
+                    <section class="checkout-card">
+                        <h3>Data Pembeli</h3>
+                        <div class="form-layout">
+                            <div class="form-field">
+                                <label for="customer-name">Nama</label>
+                                <input id="customer-name" name="name" autocomplete="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="customer-email">Email</label>
+                                <input id="customer-email" name="email" type="email" autocomplete="email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="customer-phone">Nomor telepon</label>
+                                <input id="customer-phone" name="phone" type="tel" autocomplete="tel" required>
+                            </div>
+                            <div class="form-field full-width">
+                                <label for="customer-address">Alamat</label>
+                                <textarea id="customer-address" name="address" autocomplete="street-address" required></textarea>
+                            </div>
+                        </div>
+                        <p id="customer-info-hint" class="checkout-hint">Isi data yang wajib sebelum meninjau pesanan</p>
+                    </section>
+
+                    <section class="checkout-card">
+                        <div class="checkout-section-heading">
+                            <h3>Produk yang Dipesan</h3>
+                            <span id="checkout-item-count">0 produk</span>
+                        </div>
+                        <div id="checkout-items" class="checkout-items" aria-live="polite">
+                            <p class="checkout-empty">Keranjang kamu masih kosong</p>
+                        </div>
+                    </section>
+
+                    <section class="checkout-card checkout-delivery-card">
+                        <h3>Informasi Pengiriman</h3>
+                        <p id="checkout-delivery-info" class="checkout-copy">Detail pengiriman akan ditampilkan di sini</p>
+                        <p id="checkout-delivery-address" class="delivery-address">Alamat belum diisi</p>
+                        <div id="premium-cart-note" class="premium-checkout-note" hidden>
+                            <strong>Exclusive Delivery Service</strong>
+                            <p>Pesanan premium mendapat penanganan dan pengaturan pengiriman khusus; detailnya akan dikonfirmasi sebelum pesanan dilanjutkan</p>
+                        </div>
+                    </section>
+
+                    <section id="sports-order-options" class="sports-order-options checkout-card" hidden>
+                    <h3>Pilihan Perlengkapan Olahraga</h3>
+                    <div class="form-layout">
+                        <div class="form-field">
+                            <label for="sports-choice">Olahraga yang diminati</label>
+                            <select id="sports-choice" name="sports-choice">
+                                <option value="">Pilih cabang olahraga</option>
+                                <option>Basketball</option>
+                                <option>Futsal / Football</option>
+                                <option>Badminton</option>
+                                <option>Swimming</option>
+                                <option>Fitness</option>
+                                <option>Running</option>
+                                <option>Other Sports</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="equipment-choice">Jenis perlengkapan</label>
+                            <select id="equipment-choice" name="equipment-choice">
+                                <option value="">Pilih jenis perlengkapan</option>
+                                <option>Aksesori latihan</option>
+                                <option>Perlengkapan olahraga</option>
+                                <option>Sepatu dan pakaian olahraga</option>
+                                <option>Alat latihan kekuatan</option>
+                                <option>Alat kardio</option>
+                                <option>Aksesori gym</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="shoe-size">Ukuran sepatu jika diperlukan</label>
+                            <select id="shoe-size" name="shoe-size">
+                                <option value="">Belum dipilih</option>
+                                <option>Tidak diperlukan</option>
+                                <option>36</option><option>37</option><option>38</option><option>39</option>
+                                <option>40</option><option>41</option><option>42</option><option>43</option>
+                                <option>44</option><option>45</option><option>46</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="sports-budget">Anggaran paket</label>
+                            <select id="sports-budget" name="sports-budget">
+                                <option value="">Sesuai paket di keranjang</option>
+                                <option>Rp50.000</option>
+                                <option>Rp100.000</option>
+                                <option>Rp500.000</option>
+                                <option>Rp1.000.000</option>
+                                <option>Rp5.000.000</option>
+                                <option>Rp25.000.000</option>
+                                <option>Rp100.000.000</option>
+                            </select>
+                        </div>
+                        <div class="form-field full-width">
+                            <label for="sports-notes">Catatan tambahan</label>
+                            <textarea id="sports-notes" name="sports-notes"></textarea>
+                        </div>
+                    </div>
+                    </section>
+
+                    <section class="checkout-card checkout-price-card">
+                        <h3>Total Pesanan</h3>
+                        <div class="price-summary-row"><span>Subtotal produk</span><strong id="product-subtotal">Rp0</strong></div>
+                        <div class="price-summary-row"><span>Biaya pengiriman</span><strong id="shipping-cost">Belum ditentukan</strong></div>
+                        <div class="price-summary-row"><span>Diskon</span><strong id="discount-total">Rp0</strong></div>
+                        <div class="price-summary-row price-total"><span>Total</span><strong id="order-total">Rp0</strong></div>
+                        <p class="checkout-hint">Ongkir akan dikonfirmasi sebelum pesanan dilanjutkan</p>
+                    </section>
+
+                    <p id="checkout-error" class="checkout-error" role="alert" hidden></p>
+                    <button class="button button-primary checkout-review-button" type="submit">Tinjau Pesanan</button>
+                </form>
+
+                <aside class="checkout-aside">
+                    <h3>Ringkasan Pesanan</h3>
+                    <p>Subtotal produk</p>
+                    <strong id="checkout-aside-total">Rp0</strong>
+                    <p class="checkout-hint">Ongkir dikonfirmasi terpisah</p>
+                </aside>
+            </div>
+
+            <section id="order-success" class="order-success" hidden>
+                <div class="success-mark" aria-hidden="true">&#10003;</div>
+                <p class="eyebrow">PESANAN DIBUAT</p>
+                <h2>Pemesanan Berhasil!</h2>
+                <p>Terima kasih sudah memilih LUCKY BOX GARUT! Pesanan kamu berhasil dibuat. Berikut detail pesanan kamu.</p>
+                <div class="success-summary">
+                    <div><span>Nomor pesanan</span><strong id="success-order-number"></strong></div>
+                    <div><span>Nama pembeli</span><strong id="success-customer-name"></strong></div>
+                    <div><span>Email</span><strong id="success-customer-email"></strong></div>
+                    <div><span>Nomor telepon</span><strong id="success-customer-phone"></strong></div>
+                    <div><span>Alamat pengiriman</span><strong id="success-customer-address"></strong></div>
+                    <div><span>Total pesanan</span><strong id="success-order-total"></strong></div>
+                    <div><span>Status pesanan</span><strong id="success-order-status">Pesanan Dibuat</strong></div>
+                </div>
+                <p id="success-delivery-info" class="checkout-hint"></p>
+                <div id="success-order-items" class="success-order-details"></div>
+                <div id="success-order-details" class="success-order-details" hidden></div>
+                <div class="success-actions">
+                    <button id="view-order-details" class="button button-secondary" type="button">Lihat Detail Pesanan</button>
+                    <a class="button button-primary" href="produk.html">Belanja Lagi</a>
+                    <a class="button button-secondary" href="home.html">Kembali ke Home</a>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <button id="cart-toggle" class="button button-primary cart-toggle" type="button" aria-expanded="false">Keranjang (<span id="cart-count">0</span>)</button>
+    <aside id="cart-panel" class="cart-panel" aria-label="Keranjang Belanja" hidden>
+        <h2>Keranjang Belanja</h2>
+        <div id="cart-items"><p>Keranjang kamu masih kosong</p></div>
+        <p class="cart-total">Subtotal: <span id="cart-total">Rp0</span></p>
+        <a class="button button-secondary button-small" href="produk.html">Belanja Lagi</a>
+        <a class="button button-primary button-small cart-checkout-link" href="#pesan">Lanjut ke Pemesanan</a>
+    </aside>
+
+    <dialog id="order-review-dialog" class="order-review-dialog" aria-labelledby="review-order-title">
+        <h2 id="review-order-title">Tinjau Pesanan</h2>
+        <p>Cek kembali data pembeli, produk, dan alamat sebelum konfirmasi</p>
+        <div id="review-order-content" class="review-order-content"></div>
+        <p class="checkout-hint">Konfirmasi akan membuat pesanan dengan status Pesanan Dibuat</p>
+        <div class="review-order-actions">
+            <button id="edit-order" class="button button-secondary" type="button">Ubah Data</button>
+            <button id="confirm-order" class="button button-primary" type="button">Konfirmasi Pesanan</button>
+        </div>
+    </dialog>
+
+    <footer class="site-footer"><div class="content-width footer-content"><div class="footer-brand"><strong>LUCKY BOX GARUT</strong><p>Unbox the Unexpected</p><p>Pilih mystery box sesuai minat dan budget kamu</p></div><nav class="footer-nav" aria-label="Navigasi footer"><a href="home.html">Home</a><a href="profil.html">Tentang</a><a href="produk.html">Koleksi</a><a href="service.html">Extra Privilege</a></nav><p class="footer-note">Cek detail isi setiap paket sebelum memesan</p></div></footer>
+</body>
+</html>
